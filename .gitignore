@@ -1,0 +1,16 @@
+node_modules
+
+bun.lockb
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Android
+*.lock
+
+
+go.sum
+go.mod
