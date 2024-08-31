@@ -1,4 +1,5 @@
 ## GOAT  
+![Banner](thumb.png)
 this projects is a starting point for developing static web apps using a-h/templ
 
 ### Tech Stack
