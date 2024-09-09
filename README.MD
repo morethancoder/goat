@@ -25,7 +25,7 @@ this projects is a starting point for developing static web apps using a-h/templ
 ```git clone https://github.com/morethancoder/goat.git```
 
 - initalize the project
-```go mod init yourprojectname```
+```go mod init yourprojectname && go mod tidy```
 
 - change the import in main.go 
 ``` "morethancoder/goat/components" -> "yourprojectname/components" ```
