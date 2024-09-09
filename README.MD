@@ -16,15 +16,26 @@ this projects is a starting point for developing static web apps using a-h/templ
 - templ (using go install github.com/a-h/templ/cmd/templ@latest)
 - make 
 - entr
-- alpinejs (as a file under static/js/alpine.min.js)
+- alpinejs (as a file under /public/static/js/alpine.min.js)
+
+
 
 ## usage
+- clone the repo
+```git clone https://github.com/morethancoder/goat.git```
+
+- initalize the project
+```go mod init yourprojectname```
+
+- change the import in main.go 
+``` "morethancoder/goat/components" -> "yourprojectname/components" ```
+
 - install required node modules
 ```bun install```
 
 - start the vite dev server 
-```bun run dev```
+```make vite```
 
-- start file watching
+- start file watching & compiling
 ```make watch```
 

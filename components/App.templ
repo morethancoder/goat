@@ -6,17 +6,17 @@ templ App() {
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Your Web App Title</title>
+    <title>Blank App</title>
     <meta name="description" content="A brief description of your web application"/>
 
     <!-- Scripts -->
-    <script defer src="static/js/alpine.min.js"></script>
+    <script defer src="/static/js/alpine.min.js"></script>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="styles.css"/>
+    <link rel="stylesheet" href="/static/css/styles.css"/>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="path/to/favicon.png"/>
+    <link rel="icon" type="image/png" href="/static/assets/logo.svg"/>
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Your Web App Title"/>
     <meta property="og:description" content="A brief description of your web application"/>
@@ -24,29 +24,74 @@ templ App() {
     <meta property="og:url" content="https://yourwebsite.com"/>
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image"/>
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
 </head>
-<body>
-    <header x-data="{ message: 'Hello, World! 🤖 ' }">
-    <h1 class="text-3xl">Your Web App Title</h1>
-        <h1 x-text="message"></h1>
-        <input type="text" x-model="message" />
+<body class=" dark:text-white dark:bg-black" 
+    x-data="{ time: new Date().toLocaleTimeString() }"
+    x-init="setInterval(() => time = new Date().toLocaleTimeString(), 1000)">
+
+    <!-- Your Web App Content Here -->
+    <main x-cloak class="container relative mx-auto p-4">
+        <h1 class="text-3xl" x-text="document.title">New Web App</h1>
+        <p class="text-sm text-gray-700 dark:text-gray-300 mb-4">The above title comes from <code>document.title</code> <br/>
+        You can edit the document title in <code class="text-violet-500"> ./components/App.templ </code>
+        </p>
+
+        <div x-data="{
+            count: 0,
+            intervalId: null,
+            increment() {
+                this.count++
+            },
+            startIncrementing() {
+                this.increment();
+                this.intervalId = setInterval(() => this.increment(), 300);
+            },
+            stopIncrementing() {
+                clearInterval(this.intervalId);
+            }
+        }" class="flex items-center gap-2 text-xl mt-4">
+            <h2> AlpineJS Counter</h2>
+            <button class="active:text-blue-600 hover:text-green-600 select-none pt-1" 
+            x-text="count"
+            @mousedown="startIncrementing" 
+            @mouseup="stopIncrementing" 
+            @mouseleave="stopIncrementing"
+            ></button>
+        </div>
+        <p class="text-sm text-gray-700 dark:text-gray-300">Click or hold the count to increment 
+        </p>
 
 
-        <!-- Your header content -->
-    </header>
+        <div class="flex items-center gap-2 mt-4">
+        <p class="text-sm text-gray-700 dark:text-gray-300">The current theme is: </p>
+        <span x-text="window.matchMedia('(prefers-color-scheme: dark)').matches ? 'Dark' : 'Light'"></span>
+        </div>
 
-    <nav>
-        <!-- Your navigation menu -->
-    </nav>
+        <div class="flex items-center gap-2">
+        <p class="text-sm text-gray-700 dark:text-gray-300">The current time is: </p>
+        <span x-text="time">00:00:00</span>
+        </div>
 
-    <main >
-        <!-- Your main content -->
+
+        
+        <p class="text-sm text-gray-700 dark:text-gray-300 mt-4">Interactivity done using 
+            <a class="text-teal-600" target="_blank" href="https://alpinejs.dev/">alpinejs</a>
+        </p>
+
+        <p class="text-sm text-gray-700 dark:text-gray-300">styling done using 
+            <a class="text-sky-600" target="_blank" href="https://tailwindcss.com/">tailwindcss</a>
+        </p>
+        
+        <p class="text-sm text-gray-700 dark:text-gray-300">a 
+            <a class="text-yellow-500" target="_blank" href="https://github.com/morethancoder/goat">star</a>
+            would show appreciation
+        </p>
+
+
     </main>
-
-    <footer>
-        <!-- Your footer content -->
-    </footer>
-
 </body>
 </html>
 }
