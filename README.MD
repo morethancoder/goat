@@ -3,21 +3,19 @@
 this projects is a starting point for developing static web apps using a-h/templ
 
 ### Tech Stack
-- Go (for logic behind templates)
+- Go ( Templ for logic behind templating) 
 - Alpinejs (javascript framework)
-- Templ (html template engine)
 - Tailwindcss (css framework)
 - vite (optional) for hot reloading
 
 
 ## dependencies
-- bun (or yarn or pnpm) used to install vite
+- alpinejs (as a file under /public/static/js/alpine.min.js)
+- bun (or yarn or pnpm) used to install/run vite and tailwindcss
 - go 
-- templ (using go install github.com/a-h/templ/cmd/templ@latest)
+- templ cmd (using go install github.com/a-h/templ/cmd/templ@latest)
 - make 
 - entr
-- alpinejs (as a file under /public/static/js/alpine.min.js)
-
 
 
 ## usage
@@ -39,3 +37,4 @@ this projects is a starting point for developing static web apps using a-h/templ
 - start file watching & compiling
 ```make watch```
 
+- star the repo
