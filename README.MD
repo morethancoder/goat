@@ -1,6 +1,6 @@
 # GOAT
 
-![Banner](thumb.png)
+![Banner](./thumb.png)
 
 This project is a starting point for developing static web apps using [a-h/templ](https://github.com/a-h/templ).
 
