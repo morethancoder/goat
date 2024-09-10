@@ -60,6 +60,7 @@ templ App() {
             @mouseup="stopIncrementing" 
             @mouseleave="stopIncrementing"
             ></button>
+            <span x-show="count >= 100">🎉</span>
         </div>
         <p class="text-sm text-gray-700 dark:text-gray-300">Click or hold the count to increment 
         </p>
