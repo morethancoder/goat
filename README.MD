@@ -2,7 +2,7 @@
 
 ![Banner](./thumb.png)
 
-This project is a starting point for developing static web apps using [a-h/templ](https://github.com/a-h/templ).
+This project is a starting point for developing web apps using [a-h/templ](https://github.com/a-h/templ).
 
 ## Tech Stack
 - [Go](https://golang.org/) (with [Templ](https://github.com/a-h/templ) for logic behind templating)
