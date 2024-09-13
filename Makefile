@@ -5,10 +5,10 @@ run:
 compile: tailwindcss templ run 
 
 vite: 
-	bun run vite ./public
+	bun run vite ./public 
 
 watch:
-	ls ./components/*.templ | entr -r make compile
+	find . -name "*.templ" | entr -r make compile
 
 test:
 	go test -v ./... -count=1 

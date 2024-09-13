@@ -10,7 +10,7 @@ import "context"
 import "io"
 import "bytes"
 
-func App() templ.Component {
+func App(route string) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -23,7 +23,153 @@ func App() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Blank App</title><meta name=\"description\" content=\"A brief description of your web application\"><!-- Scripts --><script defer src=\"/static/js/alpine.min.js\"></script><!-- Styles --><link rel=\"stylesheet\" href=\"/static/css/styles.css\"><!-- Favicon --><link rel=\"icon\" type=\"image/png\" href=\"/static/assets/logo.svg\"><!-- Open Graph Meta Tags --><meta property=\"og:title\" content=\"Your Web App Title\"><meta property=\"og:description\" content=\"A brief description of your web application\"><meta property=\"og:image\" content=\"path/to/og-image.jpg\"><meta property=\"og:url\" content=\"https://yourwebsite.com\"><!-- Twitter Card Meta Tags --><meta name=\"twitter:card\" content=\"summary_large_image\"><style>\n        [x-cloak] { display: none !important; }\n    </style></head><body class=\" dark:text-white dark:bg-black\" x-data=\"{ time: new Date().toLocaleTimeString() }\" x-init=\"setInterval(() =&gt; time = new Date().toLocaleTimeString(), 1000)\"><!-- Your Web App Content Here --><main x-cloak class=\"container relative mx-auto p-4\"><h1 class=\"text-3xl\" x-text=\"document.title\">New Web App</h1><p class=\"text-sm text-gray-700 dark:text-gray-300 mb-4\">The above title comes from <code>document.title</code><br>You can edit the document title in <code class=\"text-violet-500\">./components/App.templ </code></p><div x-data=\"{\n            count: 0,\n            intervalId: null,\n            increment() {\n                this.count++\n            },\n            startIncrementing() {\n                this.increment();\n                this.intervalId = setInterval(() =&gt; this.increment(), 300);\n            },\n            stopIncrementing() {\n                clearInterval(this.intervalId);\n            }\n        }\" class=\"flex items-center gap-2 text-xl mt-4\"><h2>AlpineJS Counter</h2><button class=\"active:text-blue-600 hover:text-green-600 select-none pt-1\" x-text=\"count\" @mousedown=\"startIncrementing\" @mouseup=\"stopIncrementing\" @mouseleave=\"stopIncrementing\"></button> <span x-show=\"count &gt;= 100\">🎉</span></div><p class=\"text-sm text-gray-700 dark:text-gray-300\">Click or hold the count to increment </p><div class=\"flex items-center gap-2 mt-4\"><p class=\"text-sm text-gray-700 dark:text-gray-300\">The current theme is: </p><span x-text=\"window.matchMedia(&#39;(prefers-color-scheme: dark)&#39;).matches ? &#39;Dark&#39; : &#39;Light&#39;\"></span></div><div class=\"flex items-center gap-2\"><p class=\"text-sm text-gray-700 dark:text-gray-300\">The current time is: </p><span x-text=\"time\">00:00:00</span></div><p class=\"text-sm text-gray-700 dark:text-gray-300 mt-4\">Interactivity done using  <a class=\"text-teal-600\" target=\"_blank\" href=\"https://alpinejs.dev/\">alpinejs</a></p><p class=\"text-sm text-gray-700 dark:text-gray-300\">styling done using  <a class=\"text-sky-600\" target=\"_blank\" href=\"https://tailwindcss.com/\">tailwindcss</a></p><p class=\"text-sm text-gray-700 dark:text-gray-300\">a  <a class=\"text-yellow-500\" target=\"_blank\" href=\"https://github.com/morethancoder/goat\">star</a> would show appreciation</p></main></body></html>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Blank App</title><meta name=\"description\" content=\"A brief description of your web application\"><!-- Scripts --><script defer src=\"/static/js/alpine.min.js\"></script><!-- Styles --><link rel=\"stylesheet\" href=\"/static/css/styles.css\"><!-- Favicon --><link rel=\"icon\" type=\"image/png\" href=\"/static/assets/logo.png\" sizes=\"576x576\"><!-- Apple Touch Icon (for iOS devices) --><link rel=\"apple-touch-icon\" href=\"/static/assets/logo.png\"><!-- Microsoft application tile icon --><meta name=\"msapplication-TileImage\" content=\"/static/assets/logo.png\"><meta name=\"msapplication-TileColor\" content=\"#ffffff\"><!-- Open Graph Meta Tags --><meta property=\"og:title\" content=\"Your Web App Title\"><meta property=\"og:description\" content=\"A brief description of your web application\"><meta property=\"og:image\" content=\"path/to/og-image.jpg\"><meta property=\"og:url\" content=\"https://yourwebsite.com\"><!-- Twitter Card Meta Tags --><meta name=\"twitter:card\" content=\"summary_large_image\"><style>\n        [x-cloak] {\n            display: none !important;\n        }\n    </style></head><body class=\"bg-white dark:bg-black text-stone-900 dark:text-stone-100 \n    min-h-screen flex flex-col items-center justify-start\"><!-- Your Web App Content Here -->")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = Header().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		switch route {
+		case "/":
+			templ_7745c5c3_Err = Home().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		case "/examples":
+			templ_7745c5c3_Err = Examples().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		case "/contact":
+			templ_7745c5c3_Err = Contact().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		default:
+			templ_7745c5c3_Err = Home().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		templ_7745c5c3_Err = Footer().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</body></html>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if !templ_7745c5c3_IsBuffer {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteTo(templ_7745c5c3_W)
+		}
+		return templ_7745c5c3_Err
+	})
+}
+
+func Header() templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
+		if !templ_7745c5c3_IsBuffer {
+			templ_7745c5c3_Buffer = templ.GetBuffer()
+			defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var2 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var2 == nil {
+			templ_7745c5c3_Var2 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<header x-cloak class=\"w-full flex justify-between items-center max-w-4xl mb-8 select-none \nsticky top-0 bg-white dark:bg-black z-10 shadow-sm dark:shadow-none py-2 px-4\" x-data=\"{ path: window.location.pathname }\"><a href=\"/\" class=\"flex items-center space-x-2 rounded-full border-2 sm:px-4 sm:py-2 sm:border-0\" :class=\"path === &#39;/&#39; ? &#39;border-current/80 sm:bg-stone-100 sm:dark:bg-stone-800&#39; : &#39;border-transparent&#39;\"><img src=\"/static/assets/logo.png\" alt=\"Logo\" class=\"w-10 h-10\"> <span class=\"hidden sm:inline text-xl font-bold\"><span class=\" text-yellow-500\">GOAT</span> Stack</span></a><nav class=\"space-x-1\"><a href=\"/examples\" class=\"px-4 py-2 hover:bg-stone-100 dark:hover:bg-stone-800 transition rounded-md inline-flex items-center\" :class=\"{ &#39;bg-stone-100 dark:bg-stone-800&#39;: path === &#39;/examples&#39; }\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = IconPuzzle().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<span class=\"ml-1 hidden sm:inline\">Examples</span></a> <a href=\"/contact\" class=\"px-4 py-2 hover:bg-stone-100 dark:hover:bg-stone-800 transition rounded-md inline-flex items-center\" :class=\"{ &#39;bg-stone-100 dark:bg-stone-800&#39;: path === &#39;/contact&#39; }\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = IconContact().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<span class=\"ml-1 hidden sm:inline\">Contact</span></a></nav></header>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if !templ_7745c5c3_IsBuffer {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteTo(templ_7745c5c3_W)
+		}
+		return templ_7745c5c3_Err
+	})
+}
+
+func IconPuzzle() templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
+		if !templ_7745c5c3_IsBuffer {
+			templ_7745c5c3_Buffer = templ.GetBuffer()
+			defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var3 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var3 == nil {
+			templ_7745c5c3_Var3 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<svg x-show=\"path === &#39;/examples&#39;\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-5\"><path d=\"M11.25 5.337c0-.355-.186-.676-.401-.959a1.647 1.647 0 0 1-.349-1.003c0-1.036 1.007-1.875 2.25-1.875S15 2.34 15 3.375c0 .369-.128.713-.349 1.003-.215.283-.401.604-.401.959 0 .332.278.598.61.578 1.91-.114 3.79-.342 5.632-.676a.75.75 0 0 1 .878.645 49.17 49.17 0 0 1 .376 5.452.657.657 0 0 1-.66.664c-.354 0-.675-.186-.958-.401a1.647 1.647 0 0 0-1.003-.349c-1.035 0-1.875 1.007-1.875 2.25s.84 2.25 1.875 2.25c.369 0 .713-.128 1.003-.349.283-.215.604-.401.959-.401.31 0 .557.262.534.571a48.774 48.774 0 0 1-.595 4.845.75.75 0 0 1-.61.61c-1.82.317-3.673.533-5.555.642a.58.58 0 0 1-.611-.581c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.035-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959a.641.641 0 0 1-.658.643 49.118 49.118 0 0 1-4.708-.36.75.75 0 0 1-.645-.878c.293-1.614.504-3.257.629-4.924A.53.53 0 0 0 5.337 15c-.355 0-.676.186-.959.401-.29.221-.634.349-1.003.349-1.036 0-1.875-1.007-1.875-2.25s.84-2.25 1.875-2.25c.369 0 .713.128 1.003.349.283.215.604.401.959.401a.656.656 0 0 0 .659-.663 47.703 47.703 0 0 0-.31-4.82.75.75 0 0 1 .83-.832c1.343.155 2.703.254 4.077.294a.64.64 0 0 0 .657-.642Z\"></path></svg> <svg x-show=\"path !== &#39;/examples&#39;\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\" class=\"size-5\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M14.25 6.087c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.036-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959v0a.64.64 0 0 1-.657.643 48.39 48.39 0 0 1-4.163-.3c.186 1.613.293 3.25.315 4.907a.656.656 0 0 1-.658.663v0c-.355 0-.676-.186-.959-.401a1.647 1.647 0 0 0-1.003-.349c-1.036 0-1.875 1.007-1.875 2.25s.84 2.25 1.875 2.25c.369 0 .713-.128 1.003-.349.283-.215.604-.401.959-.401v0c.31 0 .555.26.532.57a48.039 48.039 0 0 1-.642 5.056c1.518.19 3.058.309 4.616.354a.64.64 0 0 0 .657-.643v0c0-.355-.186-.676-.401-.959a1.647 1.647 0 0 1-.349-1.003c0-1.035 1.008-1.875 2.25-1.875 1.243 0 2.25.84 2.25 1.875 0 .369-.128.713-.349 1.003-.215.283-.4.604-.4.959v0c0 .333.277.599.61.58a48.1 48.1 0 0 0 5.427-.63 48.05 48.05 0 0 0 .582-4.717.532.532 0 0 0-.533-.57v0c-.355 0-.676.186-.959.401-.29.221-.634.349-1.003.349-1.035 0-1.875-1.007-1.875-2.25s.84-2.25 1.875-2.25c.37 0 .713.128 1.003.349.283.215.604.401.96.401v0a.656.656 0 0 0 .658-.663 48.422 48.422 0 0 0-.37-5.36c-1.886.342-3.81.574-5.766.689a.578.578 0 0 1-.61-.58v0Z\"></path></svg>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if !templ_7745c5c3_IsBuffer {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteTo(templ_7745c5c3_W)
+		}
+		return templ_7745c5c3_Err
+	})
+}
+
+func IconContact() templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
+		if !templ_7745c5c3_IsBuffer {
+			templ_7745c5c3_Buffer = templ.GetBuffer()
+			defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var4 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var4 == nil {
+			templ_7745c5c3_Var4 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\" class=\"w-5 h-5\" x-show=\"path !== &#39;/contact&#39;\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75\"></path></svg> <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"w-5 h-5\" x-show=\"path === &#39;/contact&#39;\"><path d=\"M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z\"></path> <path d=\"M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z\"></path></svg>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if !templ_7745c5c3_IsBuffer {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteTo(templ_7745c5c3_W)
+		}
+		return templ_7745c5c3_Err
+	})
+}
+
+func Footer() templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
+		if !templ_7745c5c3_IsBuffer {
+			templ_7745c5c3_Buffer = templ.GetBuffer()
+			defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var5 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var5 == nil {
+			templ_7745c5c3_Var5 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<footer class=\"w-full flex justify-center items-center mb-8 mt-16 opacity-90\"><p class=\"text-sm\">© <span x-text=\"new Date().getFullYear()\">2024</span> Crafted with <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"w-4 h-4 inline-block text-red-500 mx-1\"><path d=\"M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z\"></path></svg> by <a href=\"https://github.com/morethancoder\" target=\"_blank\" class=\"underline hover:text-yellow-500 dark:hover:text-yellow-400 transition ml-1\">MorethanCoder</a></p></footer>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
