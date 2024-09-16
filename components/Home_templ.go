@@ -71,7 +71,7 @@ func Home() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"flex-grow\" x-data=\"{ copied: false }\"><p class=\"font-medium mb-2\">Clone the repo:</p><div class=\"relative group\"><pre class=\"bg-stone-100 dark:bg-stone-800 p-2 rounded-md overflow-x-auto\"><code>git clone https://github.com/morethancoder/goat.git</code></pre><button @click=\"navigator.clipboard.writeText(&#39;git clone https://github.com/morethancoder/goat.git&#39;); copied = true; setTimeout(() =&gt; copied = false, 2000)\" class=\"absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200\" :aria-label=\"copied ? &#39;Copied!&#39; : &#39;Copy to clipboard&#39;\"><span x-show=\"!copied\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"flex-grow\" x-data=\"{ copied: false }\"><p class=\"font-medium mb-2\">Clone the repo:</p><div class=\"relative group\"><pre class=\"bg-stone-100 dark:bg-stone-800 p-2 rounded-md overflow-x-auto\"><code>git clone https://github.com/morethancoder/goat.git yourprojectname</code></pre><button @click=\"navigator.clipboard.writeText(&#39;git clone https://github.com/morethancoder/goat.git&#39;); copied = true; setTimeout(() =&gt; copied = false, 2000)\" class=\"absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200\" :aria-label=\"copied ? &#39;Copied!&#39; : &#39;Copy to clipboard&#39;\"><span x-show=\"!copied\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
