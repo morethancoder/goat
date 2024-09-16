@@ -61,7 +61,7 @@ templ Home() {
                             </code>
                         </pre>
                         <button
-                            @click="navigator.clipboard.writeText('git clone https://github.com/morethancoder/goat.git'); copied = true; setTimeout(() => copied = false, 2000)"
+                            @click="navigator.clipboard.writeText('git clone https://github.com/morethancoder/goat.git yourprojectname'); copied = true; setTimeout(() => copied = false, 2000)"
                             class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
                             :aria-label="copied ? 'Copied!' : 'Copy to clipboard'">
                             <span x-show="!copied">
