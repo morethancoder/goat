@@ -10,10 +10,6 @@ import "context"
 import "io"
 import "bytes"
 
-import (
-	"fmt"
-)
-
 func Examples() templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
@@ -27,112 +23,79 @@ func Examples() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<main class=\"max-w-4xl w-full space-y-12 p-4 sm:p-8\"><header class=\"text-center\"><h1 class=\"text-4xl font-bold mb-2\"><span class=\"text-yellow-500\">GOAT</span> Stack Examples</h1><p class=\"text-lg mb-6 max-w-xl mx-auto\">Explore the power of Alpine.js and Tailwind CSS with these interactive examples</p></header><section class=\"space-y-8\"><h2 class=\"text-2xl font-semibold mb-4\">Basic Counter</h2><div class=\"border border-current p-6 rounded-lg\" x-data=\"{ count: 0 }\"><p class=\"mb-4\">Current count: <span x-text=\"count\" class=\"font-bold text-yellow-500\"></span></p><button @click=\"count++\" class=\"border border-current px-4 py-2 rounded-md hover:bg-stone-100 dark:hover:bg-stone-800 transition\">Increment</button></div><div class=\"relative\" x-data=\"{ copied: false }\"><pre class=\"bg-stone-100 dark:bg-stone-800 p-4 rounded-md overflow-x-auto\"><code class=\"text-yellow-500\" x-ref=\"codeBlockCounter\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<main class=\"max-w-4xl w-full space-y-12 p-4 sm:p-8\"><header class=\"text-center\"><h1 class=\"text-4xl font-bold mb-2\"><span class=\"text-yellow-500\">GOAT</span> Stack Examples</h1><p class=\"text-lg mb-6 max-w-xl mx-auto\">Explore the power of Go templates with Alpine.js and Tailwind CSS</p></header><section class=\"space-y-8\"><h2 class=\"text-2xl font-semibold mb-4\">Button Component</h2><div class=\"border border-current p-6 rounded-lg space-x-4\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var2 string
-		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("<div x-data=\"{ count: 0 }\">\\n  <p>Current count: <span x-text=\"count\"></span></p>\\n  <button @click=\"count++\">Increment</button>\\n</div>"))
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/Examples.templ`, Line: 21, Col: 308}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
+		templ_7745c5c3_Err = Button("Primary", "bg-yellow-500 text-white", templ.Attributes{"type": "submit"}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</code></pre><button @click=\"navigator.clipboard.writeText($refs.codeBlockCounter.textContent.trim()); copied = true; setTimeout(() =&gt; copied = false, 2000)\" class=\"absolute top-2 right-2 bg-stone-200 dark:bg-stone-700 p-1 rounded-md hover:bg-stone-300 dark:hover:bg-stone-600 transition\" :aria-label=\"copied ? &#39;Copied!&#39; : &#39;Copy to clipboard&#39;\"><span x-show=\"!copied\">")
+		templ_7745c5c3_Err = Button("Secondary", "bg-stone-200 text-stone-800 dark:bg-stone-700 dark:text-white", templ.Attributes{"type": "button"}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = IconCopy().Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Button("Outline", "border border-stone-800 text-stone-800 dark:border-stone-200 dark:text-stone-200", templ.Attributes{"type": "button"}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</span> <span x-show=\"copied\" class=\"text-green-500\">✓</span></button></div></section><section class=\"space-y-8\"><h2 class=\"text-2xl font-semibold mb-4\">Toggle Visibility</h2><div class=\"border border-current p-6 rounded-lg\" x-data=\"{ show: false }\"><button @click=\"show = !show\" class=\"border border-current px-4 py-2 rounded-md hover:bg-stone-100 dark:hover:bg-stone-800 transition mb-4\">Toggle Content</button><p x-show=\"show\" x-transition class=\"bg-stone-100 dark:bg-stone-800 p-4 rounded-md\">This content can be toggled!</p></div><div class=\"relative\" x-data=\"{ copied: false }\"><pre class=\"bg-stone-100 dark:bg-stone-800 p-4 rounded-md overflow-x-auto\"><code class=\"text-yellow-500\" x-ref=\"codeBlockToggle\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var3 string
-		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("<div x-data=\"{ show: false }\">\\n  <button @click=\"show = !show\">Toggle Content</button>\\n  <p x-show=\"show\" x-transition>This content can be toggled!</p>\\n</div>"))
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/Examples.templ`, Line: 41, Col: 332}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
+		templ_7745c5c3_Err = CodeBlock(buttonCode).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</code></pre><button @click=\"navigator.clipboard.writeText($refs.codeBlockToggle.textContent.trim()); copied = true; setTimeout(() =&gt; copied = false, 2000)\" class=\"absolute top-2 right-2 bg-stone-200 dark:bg-stone-700 p-1 rounded-md hover:bg-stone-300 dark:hover:bg-stone-600 transition\" :aria-label=\"copied ? &#39;Copied!&#39; : &#39;Copy to clipboard&#39;\"><span x-show=\"!copied\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</section><section class=\"space-y-8\"><h2 class=\"text-2xl font-semibold mb-4\">Toggle Switch</h2><div class=\"border border-current p-6 rounded-lg\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = IconCopy().Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = ToggleSwitch("Toggle Me").Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</span> <span x-show=\"copied\" class=\"text-green-500\">✓</span></button></div></section><section class=\"space-y-8\"><h2 class=\"text-2xl font-semibold mb-4\">Two-way Binding</h2><div class=\"border border-current p-6 rounded-lg\" x-data=\"{ name: &#39;&#39; }\"><input type=\"text\" x-model=\"name\" placeholder=\"Enter your name\" class=\"w-full p-2 rounded-md mb-4 bg-stone-100 dark:bg-stone-800\"><p>Hello, <span x-text=\"name || &#39;stranger&#39;\" class=\"font-bold text-yellow-500\"></span>!</p></div><div class=\"relative\" x-data=\"{ copied: false }\"><pre class=\"bg-stone-100 dark:bg-stone-800 p-4 rounded-md overflow-x-auto\"><code class=\"text-yellow-500\" x-ref=\"codeBlockBinding\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var4 string
-		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("<div x-data=\"{ name: '' }\">\\n  <input type=\"text\" x-model=\"name\" placeholder=\"Enter your name\">\\n  <p>Hello, <span x-text=\"name || 'stranger'\"></span>!</p>\\n</div>"))
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/Examples.templ`, Line: 61, Col: 339}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+		templ_7745c5c3_Err = CodeBlock(toggleSwitchCode).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</code></pre><button @click=\"navigator.clipboard.writeText($refs.codeBlockBinding.textContent.trim()); copied = true; setTimeout(() =&gt; copied = false, 2000)\" class=\"absolute top-2 right-2 bg-stone-200 dark:bg-stone-700 p-1 rounded-md hover:bg-stone-300 dark:hover:bg-stone-600 transition\" :aria-label=\"copied ? &#39;Copied!&#39; : &#39;Copy to clipboard&#39;\"><span x-show=\"!copied\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</section><section class=\"space-y-8\"><h2 class=\"text-2xl font-semibold mb-4\">Counter</h2><div class=\"border border-current p-6 rounded-lg\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = IconCopy().Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Counter().Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</span> <span x-show=\"copied\" class=\"text-green-500\">✓</span></button></div></section><section class=\"space-y-8\"><h2 class=\"text-2xl font-semibold mb-4\">Conditional Styling</h2><div class=\"border border-current p-6 rounded-lg\" x-data=\"{ count: 0 }\"><p class=\"mb-4\">Count: <span x-text=\"count\" :class=\"{ &#39;text-green-500&#39;: count &gt; 0, &#39;text-red-500&#39;: count &lt; 0 }\" class=\"font-bold\"></span></p><button @click=\"count++\" class=\"border border-current px-4 py-2 rounded-md hover:bg-stone-100 dark:hover:bg-stone-800 transition mr-2\">Increment</button> <button @click=\"count--\" class=\"border border-current px-4 py-2 rounded-md hover:bg-stone-100 dark:hover:bg-stone-800 transition\">Decrement</button></div><div class=\"relative\" x-data=\"{ copied: false }\"><pre class=\"bg-stone-100 dark:bg-stone-800 p-4 rounded-md overflow-x-auto\"><code class=\"text-yellow-500\" x-ref=\"codeBlockStyling\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var5 string
-		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("<div x-data=\"{ count: 0 }\">\\n  <p>Count: <span x-text=\"count\" :class=\"{ 'text-green-500': count > 0, 'text-red-500': count < 0 }\"></span></p>\\n  <button @click=\"count++\">Increment</button>\\n  <button @click=\"count--\">Decrement</button>\\n</div>"))
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/Examples.templ`, Line: 82, Col: 420}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
+		templ_7745c5c3_Err = CodeBlock(counterCode).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</code></pre><button @click=\"navigator.clipboard.writeText($refs.codeBlockStyling.textContent.trim()); copied = true; setTimeout(() =&gt; copied = false, 2000)\" class=\"absolute top-2 right-2 bg-stone-200 dark:bg-stone-700 p-1 rounded-md hover:bg-stone-300 dark:hover:bg-stone-600 transition\" :aria-label=\"copied ? &#39;Copied!&#39; : &#39;Copy to clipboard&#39;\"><span x-show=\"!copied\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</section><section class=\"space-y-8\"><h2 class=\"text-2xl font-semibold mb-4\">Modal Dialog</h2><div class=\"border border-current p-6 rounded-lg\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = IconCopy().Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Modal("Open Modal", "Modal Title", "This is the modal content.").Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</span> <span x-show=\"copied\" class=\"text-green-500\">✓</span></button></div></section><section class=\"space-y-8\"><h2 class=\"text-2xl font-semibold mb-4\">Loading State</h2><div class=\"border border-current p-6 rounded-lg\" x-data=\"{ loading: false }\"><button @click=\"loading = true; setTimeout(() =&gt; loading = false, 2000)\" class=\"border border-current px-4 py-2 rounded-md hover:bg-stone-100 dark:hover:bg-stone-800 transition\" :disabled=\"loading\"><span x-show=\"!loading\">Click me</span> <span x-show=\"loading\" class=\"inline-flex items-center\"><svg class=\"animate-spin -ml-1 mr-3 h-5 w-5 text-yellow-500\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\"><circle class=\"opacity-25\" cx=\"12\" cy=\"12\" r=\"10\" stroke=\"currentColor\" stroke-width=\"4\"></circle> <path class=\"opacity-75\" fill=\"currentColor\" d=\"M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z\"></path></svg> Loading...</span></button></div><div class=\"relative\" x-data=\"{ copied: false }\"><pre class=\"bg-stone-100 dark:bg-stone-800 p-4 rounded-md overflow-x-auto\"><code class=\"text-yellow-500\" x-ref=\"codeBlockLoading\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var6 string
-		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("<div x-data=\"{ loading: false }\">\\n  <button @click=\"loading = true; setTimeout(() => loading = false, 2000)\" :disabled=\"loading\">\\n    <span x-show=\"!loading\">Click me</span>\\n    <span x-show=\"loading\">\\n      <!-- Loading spinner SVG -->\\n      Loading...\\n    </span>\\n  </button>\\n</div>"))
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/Examples.templ`, Line: 110, Col: 473}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
+		templ_7745c5c3_Err = CodeBlock(modalCode).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</code></pre><button @click=\"navigator.clipboard.writeText($refs.codeBlockLoading.textContent.trim()); copied = true; setTimeout(() =&gt; copied = false, 2000)\" class=\"absolute top-2 right-2 bg-stone-200 dark:bg-stone-700 p-1 rounded-md hover:bg-stone-300 dark:hover:bg-stone-600 transition\" :aria-label=\"copied ? &#39;Copied!&#39; : &#39;Copy to clipboard&#39;\"><span x-show=\"!copied\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = IconCopy().Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</span> <span x-show=\"copied\" class=\"text-green-500\">✓</span></button></div></section></main>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</section></main>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -142,3 +105,353 @@ func Examples() templ.Component {
 		return templ_7745c5c3_Err
 	})
 }
+
+func Button(text string, classes string, attrs templ.Attributes) templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
+		if !templ_7745c5c3_IsBuffer {
+			templ_7745c5c3_Buffer = templ.GetBuffer()
+			defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var2 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var2 == nil {
+			templ_7745c5c3_Var2 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		var templ_7745c5c3_Var3 = []any{"px-4 py-2 rounded hover:opacity-80 transition duration-300 " + classes}
+		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var3...)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<button")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templ.RenderAttributes(ctx, templ_7745c5c3_Buffer, attrs)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" class=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var4 string
+		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(templ.CSSClasses(templ_7745c5c3_Var3).String())
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/Examples.templ`, Line: 1, Col: 0}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var5 string
+		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(text)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/Examples.templ`, Line: 47, Col: 113}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if !templ_7745c5c3_IsBuffer {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteTo(templ_7745c5c3_W)
+		}
+		return templ_7745c5c3_Err
+	})
+}
+
+func ToggleSwitch(label string) templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
+		if !templ_7745c5c3_IsBuffer {
+			templ_7745c5c3_Buffer = templ.GetBuffer()
+			defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var6 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var6 == nil {
+			templ_7745c5c3_Var6 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div x-data=\"{ isOn: false }\" class=\"flex items-center space-x-4\"><span class=\"text-sm font-medium text-stone-900 dark:text-stone-300\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var7 string
+		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(label)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/Examples.templ`, Line: 52, Col: 84}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</span> <button @click=\"isOn = !isOn\" :class=\"isOn ? &#39;bg-yellow-500&#39; : &#39;bg-stone-200&#39;\" class=\"relative inline-flex h-6 w-11 flex-shrink-0 \n            cursor-pointer rounded-full border-2 border-transparent \n            transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2\"><span :class=\"isOn ? &#39;translate-x-5&#39; : &#39;translate-x-0&#39;\" class=\"pointer-events-none inline-block h-5 w-5 transform rounded-full bg-stone-50 dark:bg-stone-800\n                shadow ring-0 transition duration-200 ease-in-out\"></span></button> <span x-text=\"isOn ? &#39;ON&#39; : &#39;OFF&#39;\" class=\"text-sm font-medium text-stone-900 dark:text-stone-300\"></span></div>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if !templ_7745c5c3_IsBuffer {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteTo(templ_7745c5c3_W)
+		}
+		return templ_7745c5c3_Err
+	})
+}
+
+func Counter() templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
+		if !templ_7745c5c3_IsBuffer {
+			templ_7745c5c3_Buffer = templ.GetBuffer()
+			defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var8 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var8 == nil {
+			templ_7745c5c3_Var8 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div x-data=\"{ count: 0 }\" class=\"text-center\"><p class=\"text-2xl font-bold mb-4\">Count: <span x-text=\"count\"></span></p><div class=\"space-x-2\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = Button("Increment", "bg-yellow-500 text-white", templ.Attributes{"@click": "count++", "type": "submit"}).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = Button("Decrement", "bg-stone-200 text-stone-800 dark:bg-stone-700 dark:text-white", templ.Attributes{"@click": "count--", "type": "button"}).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if !templ_7745c5c3_IsBuffer {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteTo(templ_7745c5c3_W)
+		}
+		return templ_7745c5c3_Err
+	})
+}
+
+func Modal(buttonText, title, content string) templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
+		if !templ_7745c5c3_IsBuffer {
+			templ_7745c5c3_Buffer = templ.GetBuffer()
+			defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var9 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var9 == nil {
+			templ_7745c5c3_Var9 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div x-data=\"{ isOpen: false }\"><button @click=\"isOpen = true\" class=\"bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition duration-300\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var10 string
+		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(buttonText)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/Examples.templ`, Line: 84, Col: 115}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button><div x-show=\"isOpen\" class=\"fixed z-10 inset-0 bg-black bg-opacity-50 flex items-center justify-center\" style=\"display: none;\"><div class=\"bg-white dark:bg-stone-800 p-6 rounded-lg shadow-lg\"><h3 class=\"text-lg font-semibold mb-2\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var11 string
+		templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(title)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/Examples.templ`, Line: 88, Col: 62}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h3><p class=\"mb-4\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var12 string
+		templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(content)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/Examples.templ`, Line: 89, Col: 41}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><button @click=\"isOpen = false\" class=\"bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 transition duration-300\">Close</button></div></div></div>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if !templ_7745c5c3_IsBuffer {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteTo(templ_7745c5c3_W)
+		}
+		return templ_7745c5c3_Err
+	})
+}
+
+func CodeBlock(code string) templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
+		if !templ_7745c5c3_IsBuffer {
+			templ_7745c5c3_Buffer = templ.GetBuffer()
+			defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var13 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var13 == nil {
+			templ_7745c5c3_Var13 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"relative group\"><pre class=\"bg-stone-100 dark:bg-stone-800 p-4 rounded-md overflow-x-auto\"><code class=\"language-go text-yellow-500\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var14 string
+		templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(code)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/Examples.templ`, Line: 100, Col: 60}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</code></pre>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = CopyButton(code).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if !templ_7745c5c3_IsBuffer {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteTo(templ_7745c5c3_W)
+		}
+		return templ_7745c5c3_Err
+	})
+}
+
+func CopyButton(code string) templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
+		if !templ_7745c5c3_IsBuffer {
+			templ_7745c5c3_Buffer = templ.GetBuffer()
+			defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var15 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var15 == nil {
+			templ_7745c5c3_Var15 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<button x-data=\"{ copied: false }\" @click=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var16 string
+		templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs("navigator.clipboard.writeText(`" + code + "`); copied = true; setTimeout(() => copied = false, 2000)")
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/Examples.templ`, Line: 110, Col: 119}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" class=\"absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity \n        duration-200 bg-stone-200 dark:bg-stone-700 p-1 rounded-md cursor-pointer \" :aria-label=\"copied ? &#39;Copied!&#39; : &#39;Copy to clipboard&#39;\"><span x-show=\"!copied\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = IconCopy().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</span> <span x-show=\"copied\" class=\"text-green-500\">✓</span></button>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if !templ_7745c5c3_IsBuffer {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteTo(templ_7745c5c3_W)
+		}
+		return templ_7745c5c3_Err
+	})
+}
+
+const (
+	buttonCode = `templ Button(text string, classes string) {
+    <button class={ "px-4 py-2 rounded hover:opacity-80 transition duration-300 " + classes }>{ text }</button>
+}
+
+// Usage in another template:
+@Button("Primary", "bg-blue-500 text-white")
+@Button("Secondary", "bg-gray-200 text-gray-800")
+@Button("Outline", "border border-gray-300 text-gray-700")`
+
+	toggleSwitchCode = `templ ToggleSwitch(label string) {
+    <div x-data="{ isOn: false }" class="flex items-center space-x-4">
+        <span class="text-sm font-medium text-gray-900 dark:text-gray-300">{ label }</span>
+        <button 
+            @click="isOn = !isOn" 
+            :class="isOn ? 'bg-blue-600' : 'bg-gray-200'"
+            class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        >
+            <span 
+                :class="isOn ? 'translate-x-5' : 'translate-x-0'"
+                class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
+            ></span>
+        </button>
+        <span x-text="isOn ? 'ON' : 'OFF'" class="text-sm font-medium text-gray-900 dark:text-gray-300"></span>
+    </div>
+}
+
+// Usage in another template:
+@ToggleSwitch("Toggle Me")`
+
+	counterCode = `templ Counter() {
+    <div x-data="{ count: 0 }" class="text-center">
+        <p class="text-2xl font-bold mb-4">Count: <span x-text="count"></span></p>
+        <div class="space-x-2">
+            <button @click="count++" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-300">Increment</button>
+            <button @click="count--" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition duration-300">Decrement</button>
+        </div>
+    </div>
+}
+
+// Usage in another template:
+@Counter()`
+
+	modalCode = `templ Modal(buttonText, title, content string) {
+    <div x-data="{ isOpen: false }">
+        <button @click="isOpen = true" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 transition duration-300">{ buttonText }</button>
+        
+        <div x-show="isOpen" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" style="display: none;">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-lg font-semibold mb-2">{ title }</h3>
+                <p class="mb-4">{ content }</p>
+                <button @click="isOpen = false" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 transition duration-300">Close</button>
+            </div>
+        </div>
+    </div>
+}
+
+// Usage in another template:
+@Modal("Open Modal", "Modal Title", "This is the modal content.")`
+)
